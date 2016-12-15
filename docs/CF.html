@@ -11800,6 +11800,41 @@ $( document ).ready(code_toggle);
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">html</span>
+
+&lt;a href=&quot;intro.html&quot; target=&quot;_self&quot;&gt;Introduction&lt;/a&gt;
+&lt;a href=&quot;MF.html&quot; target=&quot;_self&quot;&gt;Matrix Factorization&lt;/a&gt;
+&lt;a href=&quot;HB.html&quot; target=&quot;_self&quot;&gt;Hybrid Model&lt;/a&gt;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+
+<a href="intro.html" target="_self">Introduction</a>
+<a href="MF.html" target="_self">Matrix Factorization</a>
+<a href="HB.html" target="_self">Hybrid Model</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -11815,6 +11850,22 @@ $( document ).ready(code_toggle);
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="#Our-Model">1.1 Our Model</a></li>
+<li><a href="#Data-cleaning-:">1.2 Data cleaning</a></li>
+<li><a href="#Model">1.3 Model</a></li>
+<li><a href="#User-Based-Recommendation">1.4 User Based Recommendation</a></li>
+<li><a href="#Other-models-for-recommender-systems">1.5 Other models for recommender systems</a></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -13247,7 +13298,16 @@ Here is the sample of the dataset.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-cleaning-:">Data cleaning :<a class="anchor-link" href="#Data-cleaning-:">&#182;</a></h2><p>Since the dataset we have has 1.6 million entries, its difficult to train our model with this huge dataset on local machines. Moreover, there are many users who have rated few movies (say 3 or less). Similarly, there are movies that have been rated by very users (say 3 or less). So we select top 1000 users who have rated the maximum no. of movies and select top 1000 movies rated my top users.</p>
+<h2 id="Data-cleaning-:">Data cleaning :<a class="anchor-link" href="#Data-cleaning-:">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since the dataset we have has 1.6 million entries, its difficult to train our model with this huge dataset on local machines. Moreover, there are many users who have rated few movies (say 3 or less). Similarly, there are movies that have been rated by very users (say 3 or less). So we select top 1000 users who have rated the maximum no. of movies and select top 1000 movies rated my top users.</p>
 
 </div>
 </div>
@@ -13428,7 +13488,16 @@ Here is the sample of the dataset.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2><p>The data we have cannot be divided into training and testing data by randomly dividing some users as training data and rest of them as testing data, since to predict movies for a user, we need to have some user history. So we create a copy of the original data and mask some of ratings given by user as empty. Then we build a model using the masked dataset and try to predict the recommendation score for the missing entry. We select a threshold value of recommendation score above which the movie is expected to be rated high(4,5) by user, otherwise, the user would rate the movie low(1,2).</p>
+<h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data we have cannot be divided into training and testing data by randomly dividing some users as training data and rest of them as testing data, since to predict movies for a user, we need to have some user history. So we create a copy of the original data and mask some of ratings given by user as empty. Then we build a model using the masked dataset and try to predict the recommendation score for the missing entry. We select a threshold value of recommendation score above which the movie is expected to be rated high(4,5) by user, otherwise, the user would rate the movie low(1,2).</p>
 <p>There is no one perfect way of finding the accuracy of a collaborative model for recommender systems. This model is just used to recommend movies to the user which are expected to be rated high by him/her. But for the purpose of our project, we calculate the score of the masked entry and recommend that movie to user if the score is above threshold. If the movie is recommended and the user has actually rated that movie high(4,5 in the unmasked dataset), we add 1 to the accuracy of the model else 0. The total accuracy is defined as the mean value of accuracy for all the missing entries.</p>
 
 </div>
@@ -14394,7 +14463,16 @@ Here is the sample of the dataset.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="User-Based-Recommendation">User Based Recommendation<a class="anchor-link" href="#User-Based-Recommendation">&#182;</a></h1><p>Part1: Following is the implementation of user based recommendation:
+<h1 id="User-Based-Recommendation">User Based Recommendation<a class="anchor-link" href="#User-Based-Recommendation">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Part1: Following is the implementation of user based recommendation:
 For each user, we get a list of movies sorted in decreasing order by a score. The score for a movie is calculated by taking weighted average of user ratings for nearest neighbours of a movie. The weights user are movie-similarity score. For each user, we recommend top 10 movies with the highest scores.</p>
 
 </div>
@@ -14657,7 +14735,25 @@ For each user, we get a list of movies sorted in decreasing order by a score. Th
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h1 id="Other-models--for-recommender-systems">Other models  for recommender systems<a class="anchor-link" href="#Other-models--for-recommender-systems">&#182;</a></h1><p>We tried a few other models for recommender systems. These models are to recommend movies to a user but have no accuracy metric like RMSE to measure their goodness. One such model is described below
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Other-models-for-recommender-systems">Other models for recommender systems<a class="anchor-link" href="#Other-models-for-recommender-systems">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We tried a few other models for recommender systems. These models are to recommend movies to a user but have no accuracy metric like RMSE to measure their goodness. One such model is described below
 1.User-based collaborative filtering: In this model, we user user-user interaction to recommend movies for a user.
 Model structure and design: We have a matrix of users and movies with ratings given by users to movies.
 To recommend movies for a user, we user the following steps:</p>

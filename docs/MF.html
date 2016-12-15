@@ -11748,7 +11748,7 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
@@ -11776,7 +11776,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <script>
@@ -11800,12 +11800,63 @@ $( document ).ready(code_toggle);
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">html</span>
+
+&lt;a href=&quot;intro.html&quot; target=&quot;_self&quot;&gt;Introduction&lt;/a&gt;
+&lt;a href=&quot;CF.html&quot; target=&quot;_self&quot;&gt;Collaborative Filtering&lt;/a&gt;
+&lt;a href=&quot;HB.html&quot; target=&quot;_self&quot;&gt;Hybrid Model&lt;/a&gt;
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+
+<a href="intro.html" target="_self">Introduction</a>
+<a href="CF.html" target="_self">Collaborative Filtering</a>
+<a href="HB.html" target="_self">Hybrid Model</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Matrix-Factorization-for-recommender-systems">Matrix Factorization for recommender systems<a class="anchor-link" href="#Matrix-Factorization-for-recommender-systems">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="#Implementation-of-Matrix-factorization-for-recommender-systems">1.1 Implementation of Matrix factorization for recommender systems</a></li>
+<li><a href="#Data-cleaning-:">1.2 Data cleaning</a></li>
+<li><a href="#Tuning-of-parameters:">1.3 Tuning of parameters</a></li>
+<li><a href="#Results:">1.4 Results</a></li>
+<li><a href="#Strengths-and-weaknesses-of-different-models:">1.5 Strengths and weaknesses of different models</a></li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -15857,7 +15908,16 @@ Here is the sample of the dataset.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data-cleaning-:">Data cleaning :<a class="anchor-link" href="#Data-cleaning-:">&#182;</a></h1><p>Since the dataset we have has 1.6 million entries, its difficult to train our model with this huge dataset on local machines. Moreover, there are many users who have rated few movies (say 3 or less). Similarly, there are movies that have been rated by very users (say 3 or less). So we select top 1000 users who have rated the maximum no. of movies and select top 1000 movies rated my top users.</p>
+<h1 id="Data-cleaning-:">Data cleaning :<a class="anchor-link" href="#Data-cleaning-:">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since the dataset we have has 1.6 million entries, its difficult to train our model with this huge dataset on local machines. Moreover, there are many users who have rated few movies (say 3 or less). Similarly, there are movies that have been rated by very users (say 3 or less). So we select top 1000 users who have rated the maximum no. of movies and select top 1000 movies rated my top users.</p>
 
 </div>
 </div>
@@ -16513,13 +16573,40 @@ Here is the sample of the dataset.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Tuning-of-parameters:">Tuning of parameters:<a class="anchor-link" href="#Tuning-of-parameters:">&#182;</a></h1><p>For matrix factorization, there are three parameters that need to be tuned,</p>
+<h1 id="Tuning-of-parameters:">Tuning of parameters:<a class="anchor-link" href="#Tuning-of-parameters:">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For matrix factorization, there are three parameters that need to be tuned,</p>
 <p>i) No. of steps</p>
 <p>ii) Step Size</p>
 <p>iii) Beta (regularization constant)</p>
 <p>In addition to that , we need to decide the rank of the decomposed matrix(K). The accuracy will increase with increase in K but it is computationally inefficient. So we generally restrict it to a small number based on prior beliefs about the model. We use cross validation to tune the parameters and once we have the parameters, we use the model with K = 2 and K = 3 to predict ratings for missing entries.
 The goodness of a model is decided by the value of RMSE(Root Mean Squared Error) as defined above. The model with lower RMSE is chosen to be the final model.</p>
-<h1 id="Results:">Results:<a class="anchor-link" href="#Results:">&#182;</a></h1><p>Matrix factorization with no. of latent features = 2 gives RMSE value of 0.83 and with no. of features = 3 gives RMSE value of 0.79 which is expected as we have increased the rank of the matrix.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Results:">Results:<a class="anchor-link" href="#Results:">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Matrix factorization with no. of latent features = 2 gives RMSE value of 0.83 and with no. of features = 3 gives RMSE value of 0.79 which is expected as we have increased the rank of the matrix.</p>
 
 </div>
 </div>
@@ -16550,41 +16637,6 @@ The RMSE for matrix factorization method (with latent features = 3) is : 0.79598
 </div>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Strengths-and-weaknesses-of-different-models:">Strengths and weaknesses of different models:<a class="anchor-link" href="#Strengths-and-weaknesses-of-different-models:">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="1.-Content-Filtering-Model">1. Content Filtering Model<a class="anchor-link" href="#1.-Content-Filtering-Model">&#182;</a></h4><p>In case of content filtering model, we create a profile for each user and each movie based on characteristics of that user or movie. So additional information about a user or movie is required in addition to user ratings. This also adds computational cost of processing and storing additional details. But this model can be used to predict ratings for a new user or movie given we have enough information about that movie/user to create a profile.</p>
-<h4 id="2.-Collaborative-filtering-model">2. Collaborative filtering model<a class="anchor-link" href="#2.-Collaborative-filtering-model">&#182;</a></h4><p>In case of collaborative filtering model, we use user history and movie similarity to predict ratings for a movie. There is no additional information required to create a profile for a user since the user history is determined based on user ratings on movies he has rated. But collaborative filtering movie suffers from <code>coldstart problem</code>. The problem is that the model is unable to recommend movies for a new user since there is no user history. Content filtering model does not face this issue.</p>
-<h4 id="3.-Matrix-factorization-method">3. Matrix factorization method<a class="anchor-link" href="#3.-Matrix-factorization-method">&#182;</a></h4><p>Matrix factorization method is an alternative approach that tries to explain ratings by characterizing both users and movies from rating patterns. This model predicts ratings a user would give to a movie (which he has not yet rated).
-The tuning of matrix factorization method is computationally expensive but the accuracy of the model is higher than other models.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
 </div>
 </div>
 
