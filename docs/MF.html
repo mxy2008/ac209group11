@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Matrix-Factorization-final</title>
+<title>Matrix-Factorization-website</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11788,15 +11788,13 @@ $$ q_{kj}^{'} =  q_{kj} - \alpha *\frac{\partial }{\partial q_{kj}} e_{ij}^2 = q
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;matrixfactor.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span> 
-<span class="c1">#y = Image(filename=&#39;Image2.png&#39;, width = 500, height = 500) </span>
-<span class="c1">#z = Image(filename=&#39;Image1.png&#39;, width = 500, height = 500) </span>
-<span class="n">display</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Image1.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15672,14 +15670,25 @@ height=500
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset we use for matrix factorization is compressed dataset with 3 columns: movieID, revirewerID and rating.
+Here is the sample of the dataset.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># importing required modules </span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># importing required modules </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
 
 </div>
@@ -15692,7 +15701,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The dataset we use for matrix factorization is compressed dataset with 3 columns: movieID, revirewerID and rating.</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># The dataset we use for matrix factorization is compressed dataset with 3 columns: movieID, revirewerID and rating.</span>
 <span class="c1"># Here is the sample of the dataset.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;subset.csv&#39;</span><span class="p">)[[</span><span class="s2">&quot;movieID&quot;</span><span class="p">,</span> <span class="s2">&quot;reviewerID&quot;</span><span class="p">,</span> <span class="s2">&quot;rating&quot;</span><span class="p">]]</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15763,83 +15772,11 @@ height=500
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># grouping the data by reviewerID</span>
-<span class="n">reviewer_count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">reviewer_count</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>movieID</th>
-      <th>rating</th>
-    </tr>
-    <tr>
-      <th>reviewerID</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>A00295401U6S2UG3RAQSZ</th>
-      <td>6</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>A00348066Q1WEW5BMESN</th>
-      <td>5</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>A0040548BPHKXMHH3NTI</th>
-      <td>10</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>A00438023NNXSDBGXK56L</th>
-      <td>5</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>A0048168OBFNFN7WW8XC</th>
-      <td>9</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># no. of entries in the dataset </span>
-<span class="nb">print</span> <span class="s2">&quot;The shape of the dataset &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># no. of entries in the dataset </span>
+<span class="k">print</span> <span class="s2">&quot;The shape of the dataset &quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -15876,15 +15813,15 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># grouping the data by reviewerID</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># grouping the data by reviewerID</span>
 <span class="n">data_order</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="c1"># selecting top 1000 users</span>
-<span class="n">data_order</span> <span class="o">=</span> <span class="n">data_order</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;movieID&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data_order</span> <span class="o">=</span> <span class="n">data_order</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;movieID&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">data_order</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">data_order</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">users_selected</span> <span class="o">=</span> <span class="n">data_order</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">data_users_selected</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">users_selected</span><span class="p">)]</span>
-<span class="nb">print</span> <span class="s2">&quot;The shape of the reduced dataset &quot;</span><span class="p">,</span> <span class="n">data_users_selected</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="s2">&quot;The shape of the reduced dataset &quot;</span><span class="p">,</span> <span class="n">data_users_selected</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -15911,10 +15848,10 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># selecting most rated movies</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># selecting most rated movies</span>
 <span class="c1"># grouping the data by movieID</span>
 <span class="n">data_order2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;movieID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">data_order2</span> <span class="o">=</span> <span class="n">data_order2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data_order2</span> <span class="o">=</span> <span class="n">data_order2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">data_order2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">data_order2</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">movies_selected</span> <span class="o">=</span> <span class="n">data_order2</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -15922,7 +15859,7 @@ height=500
 <span class="n">data_users_selected</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">users_selected</span><span class="p">)]</span>
 <span class="n">data_movies_users_selected</span> <span class="o">=</span> <span class="n">data_users_selected</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;movieID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">movies_selected</span><span class="p">)]</span>
 
-<span class="nb">print</span> <span class="s2">&quot;The shape of the reduced dataset &quot;</span><span class="p">,</span> <span class="n">data_movies_users_selected</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="s2">&quot;The shape of the reduced dataset &quot;</span><span class="p">,</span> <span class="n">data_movies_users_selected</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">data_movies_users_selected</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -16008,7 +15945,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># further cleaning </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># further cleaning </span>
 <span class="c1"># removing from top 1000 users who have rated less than 3 movies</span>
 
 <span class="c1">#grouping by reviewerID</span>
@@ -16020,7 +15957,7 @@ height=500
 
 <span class="n">criterion</span> <span class="o">=</span> <span class="n">data_movies_users_selected</span><span class="p">[</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">users</span><span class="p">)</span>
 <span class="n">data_movies_users_selected_new</span> <span class="o">=</span> <span class="n">data_movies_users_selected</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span>
-<span class="nb">print</span> <span class="s2">&quot;The shape of the final dataset used in training &quot;</span><span class="p">,</span>  <span class="n">data_movies_users_selected_new</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">print</span> <span class="s2">&quot;The shape of the final dataset used in training &quot;</span><span class="p">,</span>  <span class="n">data_movies_users_selected_new</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
 </div>
@@ -16042,12 +15979,22 @@ height=500
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Creating matrix of users and movies where each cell represents rating given by the user in the row to the movie in the column</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating matrix of users and movies where each cell represents rating given by  </span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># creating matrix of users and movies where each cell represents rating given by  </span>
 <span class="c1"># the user in the row to the movie in the column</span>
 <span class="n">rp</span> <span class="o">=</span> <span class="n">data_movies_users_selected_new_test</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;movieID&#39;</span><span class="p">],</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;reviewerID&#39;</span><span class="p">],</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;rating&#39;</span><span class="p">)</span>
 <span class="n">rp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
@@ -16375,7 +16322,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># since there are many empty values in the matrix, we fill them with 0 so that they can be handled mathematically</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># since there are many empty values in the matrix, we fill them with 0 so that they can be handled mathematically</span>
 <span class="n">rp</span> <span class="o">=</span><span class="n">rp</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
@@ -16389,7 +16336,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#</span>
 <span class="c1"># An implementation of matrix factorization</span>
 <span class="c1">#</span>
 
@@ -16442,7 +16389,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># matrix factorization with K = 2</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># matrix factorization with K = 2</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">rp</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:</span><span class="mi">1000</span><span class="p">,:</span><span class="mi">1000</span><span class="p">]</span>
@@ -16477,7 +16424,7 @@ height=500
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># matrix factorization with K = 3</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># matrix factorization with K = 3</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">rp</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="p">[:</span><span class="mi">1000</span><span class="p">,:</span><span class="mi">1000</span><span class="p">]</span>
@@ -16507,36 +16454,6 @@ height=500
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># printing results</span>
-<span class="nb">print</span> <span class="s2">&quot;The RMSE for matrix factorization method (with latent features = 2) is :&quot;</span><span class="p">,</span> <span class="n">RMSE2</span>
-<span class="nb">print</span> <span class="s2">&quot;The RMSE for matrix factorization method (with latent features = 3) is :&quot;</span><span class="p">,</span> <span class="n">RMSE3</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The RMSE for matrix factorization method (with latent features = 2) is : 0.83384562304
-The RMSE for matrix factorization method (with latent features = 3) is : 0.795988583072
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -16552,6 +16469,36 @@ The goodness of a model is decided by the value of RMSE(Root Mean Squared Error)
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># printing results</span>
+<span class="k">print</span> <span class="s2">&quot;The RMSE for matrix factorization method (with latent features = 2) is :&quot;</span><span class="p">,</span> <span class="n">RMSE2</span>
+<span class="k">print</span> <span class="s2">&quot;The RMSE for matrix factorization method (with latent features = 3) is :&quot;</span><span class="p">,</span>  <span class="n">RMSE3</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> The RMSE for matrix factorization method (with latent features = 2) is : 0.83384562304
+The RMSE for matrix factorization method (with latent features = 3) is : 0.795988583072
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -16580,7 +16527,7 @@ The tuning of matrix factorization method is computationally expensive but the a
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span></span> 
 </pre></div>
 
 </div>
