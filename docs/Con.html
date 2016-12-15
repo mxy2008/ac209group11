@@ -11746,22 +11746,63 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a href="#Comparison-between-Models">Comparison between Models</a></li>
-<li><a href="#Conclusion-and-Future-Work">Conclusion and Future Work</a></li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;&lt;script&gt;</span>
+<span class="s1">code_show=true;</span>
+<span class="s1">function code_toggle() {</span>
+<span class="s1"> if (code_show){</span>
+<span class="s1"> $(&#39;div.input&#39;).hide();</span>
+<span class="s1"> } else {</span>
+<span class="s1"> $(&#39;div.input&#39;).show();</span>
+<span class="s1"> }</span>
+<span class="s1"> code_show = !code_show</span>
+<span class="s1">}</span>
+<span class="s1">$( document ).ready(code_toggle);</span>
+<span class="s1">&lt;/script&gt;</span>
+<span class="s1">&lt;form action=&quot;javascript:code_toggle()&quot;&gt;&lt;input type=&quot;submit&quot; value=&quot;Click here to toggle on/off the raw code.&quot;&gt;&lt;/form&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
 </div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<script>
+code_show=true;
+function code_toggle() {
+ if (code_show){
+ $('div.input').hide();
+ } else {
+ $('div.input').show();
+ }
+ code_show = !code_show
+}
+$( document ).ready(code_toggle);
+</script>
+<form action="javascript:code_toggle()"><input type="submit" value="Click here to toggle on/off the raw code."></form>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%%</span><span class="k">html</span>
@@ -11769,7 +11810,6 @@ div#notebook {
 &lt;a href=&quot;CF.html&quot; target=&quot;_self&quot;&gt;Collaborative Filtering&lt;/a&gt;&amp;nbsp&amp;nbsp&amp;nbsp
 &lt;a href=&quot;MF.html&quot; target=&quot;_self&quot;&gt;Matrix Factorization&lt;/a&gt;&amp;nbsp&amp;nbsp&amp;nbsp
 &lt;a href=&quot;HB.html&quot; target=&quot;_self&quot;&gt;Hybrid Model&lt;/a&gt;&amp;nbsp&amp;nbsp&amp;nbsp
-&lt;a href=&quot;Con.html&quot; target=&quot;_self&quot;&gt;Conclusion&lt;/a&gt;&amp;nbsp&amp;nbsp&amp;nbsp
 </pre></div>
 
 </div>
@@ -11783,11 +11823,10 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 
 <div class="output_html rendered_html output_subarea ">
-<a href="Intro.html" target="_self">Introduction</a>
-<a href="CF.html" target="_self">Collaborative Filtering</a>
-<a href="MF.html" target="_self">Matrix Factorization</a>
-<a href="HB.html" target="_self">Hybrid Model</a>
-<a href="Con.html" target="_self">Conclusion</a>
+<a href="Intro.html" target="_self">Introduction</a>&nbsp&nbsp&nbsp
+<a href="CF.html" target="_self">Collaborative Filtering</a>&nbsp&nbsp&nbsp
+<a href="MF.html" target="_self">Matrix Factorization</a>&nbsp&nbsp&nbsp
+<a href="HB.html" target="_self">Hybrid Model</a>&nbsp&nbsp&nbsp
 </div>
 
 </div>
@@ -11795,6 +11834,19 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><a href="#Comparison-between-Models">Comparison between Models</a></li>
+<li><a href="#Conclusion-and-Future-Work">Conclusion and Future Work</a></li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
